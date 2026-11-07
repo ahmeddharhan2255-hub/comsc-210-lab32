@@ -11,6 +11,8 @@ const int SIZE = 2;
 
 int main(){
 
+    int num;
+
     deque<Car> toll;
 
     for(int i = 0; i < SIZE; i++){
@@ -25,7 +27,14 @@ int main(){
     }
 
     while(!toll.empty()){
-        
+        int probability = rand() % 100;
+
+        if(probability < 55){
+
+        }
+        else if (probability > 55){
+            
+        }
     }
 
     return 0;
