@@ -29,12 +29,20 @@ int main(){
         
         int probability = rand() % 100;
 
-        if(probability < 55){
+        if(probability > 45){
+            cout << "Time " << count;
+            cout << " Operation: Car paid: ";
+            toll.front().print();
             toll.pop_front();
         }
-        else if (probability > 55){
+        else if (probability < 45){
+            cout << "Time " << count;
+            cout << " Operation: Car paid: ";
+            toll.back().print();
             toll.push_back(Car());
         }
+
+        count += 1;
 
         cout << "Queue: " << endl;
         for(Car car: toll){
