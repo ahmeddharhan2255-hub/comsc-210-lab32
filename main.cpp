@@ -11,8 +11,6 @@ const int SIZE = 2;
 
 int main(){
 
-    int num;
-
     deque<Car> toll;
 
     for(int i = 0; i < SIZE; i++){
@@ -27,13 +25,21 @@ int main(){
     }
 
     while(!toll.empty()){
+        int count = 1;
+        
         int probability = rand() % 100;
 
         if(probability < 55){
-            
+            toll.pop_front();
         }
         else if (probability > 55){
+            toll.push_back(Car());
+        }
 
+        cout << "Queue: " << endl;
+        for(Car car: toll){
+            cout << "\t";
+            car.print();
         }
     }
 
