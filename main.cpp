@@ -30,10 +30,10 @@ int main(){
         int probability = rand() % 100;
 
         if(probability < 55){
-
+            
         }
         else if (probability > 55){
-            
+
         }
     }
 
