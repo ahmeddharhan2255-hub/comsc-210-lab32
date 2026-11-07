@@ -3,13 +3,16 @@
 #include "Car.h"
 #include <iostream>
 #include <deque>
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 const int SIZE = 2;
 
 int main(){
+
+    srand(time(0));
 
     deque<Car> toll;
 
@@ -24,6 +27,8 @@ int main(){
         car.print();
     }
 
+    cout << endl;
+    
     int count = 0;
 
     while(!toll.empty()){
@@ -32,16 +37,17 @@ int main(){
         int probability = rand() % 100;
 
         if(probability < 55){
-            cout << "Time " << count;
+            cout << "Time: " << count;
             cout << " Operation: Car paid: ";
             toll.front().print();
             toll.pop_front();
         }
         else{
-            cout << "Time " << count;
+            cout << "Time: " << count;
             cout << " Operation: Car joined: ";
-            toll.back().print();
             toll.push_back(Car());
+            toll.back().print();
+
         }
 
         cout << "Queue: " << endl;
@@ -49,7 +55,10 @@ int main(){
             cout << "\t";
             car.print();
         }
+        cout << endl;
     }
+
+    cout << "\tEmpty" << endl;
 
     return 0;
 }
