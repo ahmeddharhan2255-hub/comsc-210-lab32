@@ -24,25 +24,25 @@ int main(){
         car.print();
     }
 
+    int count = 0;
+
     while(!toll.empty()){
-        int count = 1;
+        count += 1;
         
         int probability = rand() % 100;
 
-        if(probability > 45){
+        if(probability < 55){
             cout << "Time " << count;
             cout << " Operation: Car paid: ";
             toll.front().print();
             toll.pop_front();
         }
-        else if (probability < 45){
+        else{
             cout << "Time " << count;
-            cout << " Operation: Car paid: ";
+            cout << " Operation: Car joined: ";
             toll.back().print();
             toll.push_back(Car());
         }
-
-        count += 1;
 
         cout << "Queue: " << endl;
         for(Car car: toll){
