@@ -9,9 +9,12 @@
 
 using namespace std;
 
+void choices(array<deque<Car>,NR_LANES> plaza, int probability);
+
 const int SIZE = 2;
 const int PROB_PAY = 46;
 const int PROB_JOIN = 39;
+const int SWITCH = 15;
 const int NR_LANES = 4;
 
 int main(){
@@ -19,7 +22,7 @@ int main(){
     srand(time(0));
 
     deque<Car> lane1,lane2,lane3,lane4;
-    array<deque<Car>,4> plaza = {lane1,lane2,lane3,lane4};
+    array<deque<Car>,NR_LANES> plaza = {lane1,lane2,lane3,lane4};
 
 
     for(int i = 0; i < SIZE; i++){
@@ -40,18 +43,19 @@ int main(){
     
     int count = 0;
 
-    while(!lane1.empty()){
+    while(count != 20){
         count += 1;
         
         int probability = rand() % 100;
+        int lane_switch = rand() % 4;
 
-        if(probability >= PROB_PAY){
+        if(probability > PROB_PAY){
             cout << "Time: " << count;
             cout << " Operation: Car paid: ";
             lane1.front().print();
             lane1.pop_front();
         }
-        else if(){
+        else if(probability < PROB_JOIN && probability > SWITCH){
             cout << "Time: " << count;
             cout << " Operation: Car joined: ";
             lane1.push_back(Car());
@@ -73,4 +77,30 @@ int main(){
 
     return 0;
 }
+
+void choices(array<deque<Car>,NR_LANES> plaza, int probability){
+    if(probability > PROB_PAY){
+        cout << "Time: " << count;
+        cout << " Operation: Car paid: ";
+        lane1.front().print();
+        lane1.pop_front();
+    }
+    else if(probability < PROB_JOIN && probability > SWITCH){
+        cout << "Time: " << count;
+        cout << " Operation: Car joined: ";
+        lane1.push_back(Car());
+        lane1.back().print();
+    }
+    else{
+            
+    }
+
+    cout << "Queue: " << endl;
+        for(Car car: lane1){
+            cout << "\t";
+            car.print();
+        }
+    cout << endl;
+}
+
 
