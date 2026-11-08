@@ -24,6 +24,9 @@ int main(){
 
     for(int i = 0; i < SIZE; i++){
         lane1.push_back(Car());
+        lane2.push_back(Car());
+        lane3.push_back(Car());
+        lane4.push_back(Car());
     }
 
     cout << "Initial queue: " << endl;
@@ -42,18 +45,20 @@ int main(){
         
         int probability = rand() % 100;
 
-        if(probability < 55){
+        if(probability >= PROB_PAY){
             cout << "Time: " << count;
             cout << " Operation: Car paid: ";
             lane1.front().print();
             lane1.pop_front();
         }
-        else{
+        else if(){
             cout << "Time: " << count;
             cout << " Operation: Car joined: ";
             lane1.push_back(Car());
             lane1.back().print();
-
+        }
+        else{
+            
         }
 
         cout << "Queue: " << endl;
