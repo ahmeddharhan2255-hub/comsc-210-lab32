@@ -12,7 +12,6 @@ using namespace std;
 const int SIZE = 2;
 const int PROB_PAY = 46;
 const int PROB_JOIN = 39;
-const int SWITCH = 15;
 const int NR_LANES = 4;
 
 void choices(array<deque<Car>,NR_LANES>& lane, int num);
@@ -90,12 +89,12 @@ void choices(array<deque<Car>,NR_LANES>& lane,int num){
         cout << "Lane " << num + 1 << endl;
         return;
     }
-    else if(PROB_PAY < probability){
+    else if(PROB_PAY > probability){
         cout << "Lane " << num + 1 << " Operation: Car paid: ";
         lane[num].front().print();
         lane[num].pop_front();
     }
-    else if(probability < PROB_PAY && probability > SWITCH){
+    else if(probability < PROB_PAY + PROB_JOIN){
         cout << "Lane " << num + 1 << " Operation: Car joined: ";
         lane[num].push_back(Car());
         lane[num].back().print();
@@ -126,6 +125,8 @@ void laneswitch(array<deque<Car>, NR_LANES>& plaza, int num){
         newLane = rand() % NR_LANES;
     }
 
+    cout << "Lane: " << num << " Switched: ";
+    plaza[num].back().print();
     plaza[newLane].push_back(plaza[num].back());
     plaza[num].pop_back();
 }
