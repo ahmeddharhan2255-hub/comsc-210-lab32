@@ -63,18 +63,21 @@ int main(){
     while(count != 20){
         count += 1;
         
-        cout << "Time " << count << endl;
+        cout << "Time: " << count << endl;
 
         for(int i = 0; i < NR_LANES; i++){
             choices(plaza[i], i+1);
         }
 
+        cout << endl;
+
         for(int i = 0; i < NR_LANES; i++){
-            display(plaza[i],i+1);
+            display(plaza[i], i+1);
         }
+
+        cout << endl;
     }
 
-    cout << "\tEmpty" << endl;
 
     return 0;
 }
@@ -82,28 +85,25 @@ int main(){
 void choices(deque<Car>& lane,int num){
     int probability = rand() % 100;
 
-    cout << "Lane " << num ;
-    if(lane.empty()){
-        cout << "Empty" << endl;
-        return;
-    }
-    else if(probability > 50){
+    cout << "Lane " << num;
+    if(probability > 50){
         cout << " Operation: Car paid: ";
         lane.front().print();
         lane.pop_front();
     }
     else{
-        cout << " Operation: Car joined: " << endl;
+        cout << " Operation: Car joined: ";
         lane.push_back(Car());
         lane.back().print();
     }
-
-    cout << endl;
 }
 
 void display(deque<Car>& lane,int num){
     cout << "Lane " << num << " Queue: " << endl;
-
+    if(lane.empty()){
+        cout << "\tEmpty" << endl;
+        return;
+    }
     for(Car car: lane){
         cout << "\t";
         car.print();
