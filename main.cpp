@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void choices(array<deque<Car>,NR_LANES> plaza, int probability);
+void choices(array<deque<Car>,NR_LANES> plaza, int lane);
 
 const int SIZE = 2;
 const int PROB_PAY = 46;
@@ -38,7 +38,6 @@ int main(){
         cout << "\t";
         car.print();
     }
-
     cout << endl;
     
     int count = 0;
@@ -46,31 +45,13 @@ int main(){
     while(count != 20){
         count += 1;
         
-        int probability = rand() % 100;
-        int lane_switch = rand() % 4;
+        cout << "Time " << count << endl;
 
-        if(probability > PROB_PAY){
-            cout << "Time: " << count;
-            cout << " Operation: Car paid: ";
-            lane1.front().print();
-            lane1.pop_front();
-        }
-        else if(probability < PROB_JOIN && probability > SWITCH){
-            cout << "Time: " << count;
-            cout << " Operation: Car joined: ";
-            lane1.push_back(Car());
-            lane1.back().print();
-        }
-        else{
-            
-        }
+        choices(plaza[0],1);
+        choices(plaza[1],2);
+        choices(plaza[2],3);
+        choices(plaza[3],4);
 
-        cout << "Queue: " << endl;
-        for(Car car: lane1){
-            cout << "\t";
-            car.print();
-        }
-        cout << endl;
     }
 
     cout << "\tEmpty" << endl;
@@ -78,25 +59,29 @@ int main(){
     return 0;
 }
 
-void choices(array<deque<Car>,NR_LANES> plaza, int probability){
+void choices(deque<Car> lane,int num){
+    int probability = rand() % 100;
+    int lane_switch = rand() % 4;
+
     if(probability > PROB_PAY){
-        cout << "Time: " << count;
         cout << " Operation: Car paid: ";
-        lane1.front().print();
-        lane1.pop_front();
+        lane.front().print();
+        lane.pop_front();
     }
     else if(probability < PROB_JOIN && probability > SWITCH){
-        cout << "Time: " << count;
         cout << " Operation: Car joined: ";
-        lane1.push_back(Car());
-        lane1.back().print();
+        lane.push_back(Car());
+        lane.back().print();
     }
     else{
-            
+        switch(lane_switch);
+            if (lane_switch == num){
+                
+            }
     }
 
     cout << "Queue: " << endl;
-        for(Car car: lane1){
+        for(Car car: lane){
             cout << "\t";
             car.print();
         }
