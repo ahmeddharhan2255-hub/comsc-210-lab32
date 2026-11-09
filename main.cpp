@@ -15,7 +15,7 @@ const int PROB_JOIN = 39;
 const int SWITCH = 15;
 const int NR_LANES = 4;
 
-void choices(array<deque<Car>,NR_LANES> plaza, int lane);
+void choices(deque<Car>& lane, int num);
 
 int main(){
 
@@ -76,26 +76,19 @@ int main(){
     return 0;
 }
 
-void choices(deque<Car> lane,int num){
-    int probability = rand() % 100;
-    int lane_switch = rand() % 4;
+void choices(deque<Car>& lane,int num){
+    int probability = rand() % 2;
 
     cout << "Lane " << num << endl;
-    if(probability > PROB_PAY){
+    if(probability == 0){
         cout << " Operation: Car paid: ";
         lane.front().print();
         lane.pop_front();
     }
-    else if(probability < PROB_JOIN && probability > SWITCH){
-        cout << " Operation: Car joined: ";
+    else{
+        cout << " Operation: Car joined: " << endl;
         lane.push_back(Car());
         lane.back().print();
-    }
-    else{
-        switch(lane_switch);
-            if (lane_switch == num){
-
-            }
     }
 
     cout << "Queue: " << endl;
