@@ -16,6 +16,7 @@ const int SWITCH = 15;
 const int NR_LANES = 4;
 
 void choices(deque<Car>& lane, int num);
+void display(deque<Car>& lane, int num);
 
 int main(){
 
@@ -64,11 +65,13 @@ int main(){
         
         cout << "Time " << count << endl;
 
-        choices(plaza[0],1);
-        choices(plaza[1],2);
-        choices(plaza[2],3);
-        choices(plaza[3],4);
+        for(int i = 0; i < NR_LANES; i++){
+            choices(plaza[i], i+1);
+        }
 
+        for(int i = 0; i < NR_LANES; i++){
+            display(plaza[i],i+1);
+        }
     }
 
     cout << "\tEmpty" << endl;
@@ -79,8 +82,12 @@ int main(){
 void choices(deque<Car>& lane,int num){
     int probability = rand() % 100;
 
-    cout << "Lane " << num << endl;
-    if(probability > 50){
+    cout << "Lane " << num ;
+    if(lane.empty()){
+        cout << "Empty" << endl;
+        return;
+    }
+    else if(probability > 50){
         cout << " Operation: Car paid: ";
         lane.front().print();
         lane.pop_front();
@@ -91,10 +98,14 @@ void choices(deque<Car>& lane,int num){
         lane.back().print();
     }
 
-    cout << "Queue: " << endl;
-        for(Car car: lane){
-            cout << "\t";
-            car.print();
-        }
     cout << endl;
+}
+
+void display(deque<Car>& lane,int num){
+    cout << "Lane " << num << " Queue: " << endl;
+
+    for(Car car: lane){
+        cout << "\t";
+        car.print();
+    }
 }
