@@ -114,3 +114,4 @@ void display(deque<Car>& lane,int num){
         car.print();
     }
 }
+
