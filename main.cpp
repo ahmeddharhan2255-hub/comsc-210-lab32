@@ -91,11 +91,12 @@ void choices(array<deque<Car>,NR_LANES>& lane,int num){
             cout << "Lane: " << num + 1 << " joined" << endl;
             lane[num].push_back(Car());
             lane[num].back().print();
-            cout << endl;
         }
         else{
             cout << "Lane " << num + 1 << " Empty" << endl;
         }
+
+        cout << endl;
 
         return;
 
