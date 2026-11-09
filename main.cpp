@@ -77,10 +77,10 @@ int main(){
 }
 
 void choices(deque<Car>& lane,int num){
-    int probability = rand() % 2;
+    int probability = rand() % 100;
 
     cout << "Lane " << num << endl;
-    if(probability == 0){
+    if(probability > 50){
         cout << " Operation: Car paid: ";
         lane.front().print();
         lane.pop_front();
@@ -98,7 +98,3 @@ void choices(deque<Car>& lane,int num){
         }
     cout << endl;
 }
-
-
-
-
