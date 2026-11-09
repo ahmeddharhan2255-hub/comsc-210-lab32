@@ -86,8 +86,19 @@ void choices(array<deque<Car>,NR_LANES>& lane,int num){
     int probability = rand() % 100;
 
     if(lane[num].empty()){
-        cout << "Lane " << num + 1 << endl;
+
+        if(probability < 50){
+            cout << "Lane: " << num + 1 << " joined" << endl;
+            lane[num].push_back(Car());
+            lane[num].back().print();
+            cout << endl;
+        }
+        else{
+            cout << "Lane " << num + 1 << " Empty" << endl;
+        }
+
         return;
+
     }
     else if(PROB_PAY > probability){
         cout << "Lane " << num + 1 << " Operation: Car paid: ";
@@ -125,8 +136,9 @@ void laneswitch(array<deque<Car>, NR_LANES>& plaza, int num){
         newLane = rand() % NR_LANES;
     }
 
-    cout << "Lane: " << num << " Switched: ";
+    cout << "Lane: " << num + 1 << " Switched: ";
     plaza[num].back().print();
+    cout << endl;
     plaza[newLane].push_back(plaza[num].back());
     plaza[num].pop_back();
 }
