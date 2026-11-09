@@ -85,17 +85,22 @@ int main(){
 void choices(deque<Car>& lane,int num){
     int probability = rand() % 100;
 
-    cout << "Lane " << num;
-    if(probability > 50){
-        cout << " Operation: Car paid: ";
+    if(lane.empty()){
+        cout << "Lane " << num << endl;
+        return;
+    }
+    else if(probability > 50){
+        cout << "Lane " << num << " Operation: Car paid: ";
         lane.front().print();
         lane.pop_front();
     }
     else{
-        cout << " Operation: Car joined: ";
+        cout << "Lane " << num << " Operation: Car joined: ";
         lane.push_back(Car());
         lane.back().print();
     }
+
+    cout << endl;
 }
 
 void display(deque<Car>& lane,int num){
