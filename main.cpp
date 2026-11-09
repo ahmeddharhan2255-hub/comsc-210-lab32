@@ -95,11 +95,6 @@ void choices(array<deque<Car>,NR_LANES>& lane,int num){
         else{
             cout << "Lane " << num + 1 << " Empty" << endl;
         }
-
-        cout << endl;
-
-        return;
-
     }
     else if(PROB_PAY > probability){
         cout << "Lane " << num + 1 << " Operation: Car paid: ";
